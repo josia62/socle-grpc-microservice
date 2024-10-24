@@ -1,5 +1,5 @@
 import * as grpc from "@grpc/grpc-js";
-import { serviceGRPC } from "@/common/service/grpc.service";
+import { serviceGRPC } from "@/common/infrastructure/grpc.service";
 import { findDegree } from "@/infrastructure/grpc/degree/degree.grpc";
 
 const serverGrpc = new grpc.Server();
