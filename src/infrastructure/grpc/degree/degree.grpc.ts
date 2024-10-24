@@ -1,6 +1,6 @@
 import type * as grpc from "@grpc/grpc-js";
 import type { DegreeRequestDTO } from "@/data/dto/degree/degree-request.dto";
-import type { DegreeResponseDTO } from "@/data/dto/degree/degree.response.dto";
+import type { DegreeResponseDTO } from "@/data/dto/degree/degree-response.dto";
 
 export const findDegree = (
   call: grpc.ServerUnaryCall<DegreeRequestDTO, grpc.Metadata>,

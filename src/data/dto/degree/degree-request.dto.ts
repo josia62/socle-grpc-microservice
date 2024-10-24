@@ -1,3 +1,3 @@
 export interface DegreeRequestDTO {
-    id?: number;
-  }
+  id?: number;
+}
