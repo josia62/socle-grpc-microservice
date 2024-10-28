@@ -4,6 +4,6 @@ import { getUserById } from "@/infrastructure/grpc/degree/user.grpc";
 
 const serverGrpc = new grpc.Server();
 serverGrpc.addService(serviceGRPC.userService, {
-  FIND: getUserById,
+  getUserById,
 });
 export default serverGrpc;
