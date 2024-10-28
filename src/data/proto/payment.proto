@@ -6,7 +6,7 @@ import "google/protobuf/empty.proto";
 
 service PaymentService {
     rpc makePayment (PaymentRequestDTO) returns (PaymentResponseDTO) {}
-    rpc getAllPayments (google.protobuf.Empty) returns (AllPaymentResponseDTO) {}
+    rpc getAllPayments (google.protobuf.Empty) returns (AllPaymentsResponseDTO) {}
 }
   
 message PaymentRequestDTO {
@@ -14,9 +14,13 @@ message PaymentRequestDTO {
     int32 deposit = 2;
 }
 
-message AllPaymentResponseDTO {
+message PaymentStructureDTO {
     string userId = 1;
     int32 amount = 2;
+}
+
+message AllPaymentsResponseDTO {
+    repeated PaymentStructureDTO payments = 1;
 }
   
 message PaymentResponseDTO {
