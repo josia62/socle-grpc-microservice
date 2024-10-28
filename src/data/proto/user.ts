@@ -13,9 +13,15 @@ type SubtypeConstructor<Constructor extends new (...args: any) => any, Subtype> 
 export interface ProtoGrpcType {
   UserProto: {
     UserIdRequestDTO: MessageTypeDefinition;
+    UserRequestDTO: MessageTypeDefinition;
     UserResponseDTO: MessageTypeDefinition;
     UserService: SubtypeConstructor<typeof grpc.Client, _UserProto_UserServiceClient> & {
       service: _UserProto_UserServiceDefinition;
+    };
+  };
+  google: {
+    protobuf: {
+      Empty: MessageTypeDefinition;
     };
   };
 }
