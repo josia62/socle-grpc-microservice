@@ -5,6 +5,10 @@ import { GenericController } from "@/common/infrastructure/generic.controller";
 import type { UserSA } from "@/service/applicatif/user.sa";
 import { userSA } from "@/service/applicatif/user.sa";
 
-class UserController extends GenericController<User, UserRequestDTO, UserResponseDTO, UserSA> {}
+class UserController extends GenericController<User, UserRequestDTO, UserResponseDTO, UserSA> {
+  getUserById = async (id: string) => {
+    return this.serviceSA.getUserById(id);
+  };
+}
 
 export const userController = new UserController(userSA);
