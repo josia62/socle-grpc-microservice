@@ -1,9 +1,9 @@
 import * as grpc from "@grpc/grpc-js";
 import { serviceGRPC } from "@/common/infrastructure/grpc.service";
-import { findDegree } from "@/infrastructure/grpc/degree/degree.grpc";
+import { getUserById } from "@/infrastructure/grpc/degree/user.grpc";
 
 const serverGrpc = new grpc.Server();
-serverGrpc.addService(serviceGRPC.degreeService, {
-  Find: findDegree,
+serverGrpc.addService(serviceGRPC.userService, {
+  FIND: getUserById,
 });
 export default serverGrpc;
