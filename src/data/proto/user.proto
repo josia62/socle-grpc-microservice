@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package UserProto;
+
+service UserService {
+    rpc Find (UserIdRequestDTO) returns (UserResponseDTO) {}
+}
+  
+message UserIdRequestDTO {
+    string id = 1;
+}
+  
+message UserResponseDTO {
+    string email = 1;
+    string password = 2;
+    string firstName = 3;
+    string lastName = 4;
+    int32 age = 5;
+}
