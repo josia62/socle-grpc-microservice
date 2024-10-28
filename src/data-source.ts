@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { User } from "./data/do/payment.do";
+import { Payment } from "./data/do/payment.do";
 import { configs } from "./data/constants/configs";
 
 const { DB_HOST, DB_NAME, DB_PORT, DB_PASS, DB_USER, DB_TYPE, NODE_ENV } = configs;
@@ -14,7 +14,7 @@ export const AppDataSource = new DataSource({
   database: DB_NAME,
   synchronize: NODE_ENV !== "production",
   logging: false,
-  entities: [User],
+  entities: [Payment],
   migrations: [],
   subscribers: [],
 });

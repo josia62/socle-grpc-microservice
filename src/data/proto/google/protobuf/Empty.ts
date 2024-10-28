@@ -1,5 +1,8 @@
 // Original file: null
 
-export type Empty = {};
 
-export type Empty__Output = {};
+export interface Empty {
+}
+
+export interface Empty__Output {
+}

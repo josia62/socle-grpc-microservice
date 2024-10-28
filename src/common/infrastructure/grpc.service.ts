@@ -2,7 +2,7 @@ import path from "node:path";
 import * as protoLoader from "@grpc/proto-loader";
 import * as grpc from "@grpc/grpc-js";
 import * as fs from "node:fs";
-import type { ProtoGrpcType } from "@/data/proto/user";
+import type { ProtoGrpcType } from "@/data/proto/payment";
 
 const protoDir = path.join("src/data/proto");
 const protoFiles = fs
@@ -17,8 +17,8 @@ const packageDefinition = protoLoader.loadSync(protoFiles, {
   oneofs: true,
 });
 
-const userProto = grpc.loadPackageDefinition(packageDefinition) as unknown as ProtoGrpcType;
+const paymentProto = grpc.loadPackageDefinition(packageDefinition) as unknown as ProtoGrpcType;
 
 export const serviceGRPC = {
-  userService: userProto.UserProto.UserService.service,
+  paymentService: paymentProto.PaymentProto.PaymentService.service,
 };
