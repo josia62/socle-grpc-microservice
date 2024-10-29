@@ -14,18 +14,23 @@ class PaymentController extends GenericController<Payment, PaymentRequestDTO, Pa
       firstName: "John",
       lastName: "Doe",
       age: 30,
-      amount: 200,
     };
-    const response = await this.serviceSA.findOne({ userId: data.userId });
     const deposit = data.deposit || 0;
     const userId = data.userId || "";
-    if (response) {
-      const newAmount = response.amount + deposit;
-      await this.serviceSA.update(response.id, { amount: newAmount });
-      return mockResponse;
-    } else {
+    try {
+      const response = await this.serviceSA.findOne({ userId: data.userId });
+      const newAmount = response?.amount ? response.amount + deposit : deposit;
+      response?.id && response.amount && (await this.serviceSA.update(response.id, { amount: newAmount }));
+      return {
+        ...mockResponse,
+        amount: newAmount,
+      };
+    } catch {
       await this.serviceSA.create({ userId, amount: deposit });
-      return mockResponse;
+      return {
+        ...mockResponse,
+        amount: deposit,
+      };
     }
   }
 }
