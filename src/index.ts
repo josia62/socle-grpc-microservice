@@ -6,10 +6,10 @@ import { logger } from "./common/logger";
 import App from "./app";
 
 const bootstrapAsync = async () => {
-  const { PORT } = configs;
+  const { GRPC_PORT } = configs;
   try {
     await App.init();
-    serverGrpc.bindAsync(`localhost:${PORT}`, grpc.ServerCredentials.createInsecure(), (err, port) => {
+    serverGrpc.bindAsync(`localhost:${GRPC_PORT}`, grpc.ServerCredentials.createInsecure(), (err, port) => {
       if (err) {
         logger.error(err);
         return;

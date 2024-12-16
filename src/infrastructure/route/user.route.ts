@@ -3,8 +3,8 @@ import { userController } from "../controller/user.controller";
 
 const userRoutes = () => {
   const router = Router();
-  router.get("/:id", userController.getUserById);
-  router.post("/", userController.createUser);
+  router.get("/:id", userController.getUserByIdREST);
+  router.post("/", userController.createUserREST);
   return router;
 };
 

@@ -8,7 +8,8 @@ dotenv.config();
 export const configs = cleanEnv(process.env, {
   NODE_ENV: str({ default: "development", choices: ["development", "production", "test"] }),
   HOST: host({ default: "localhost" }),
-  PORT: port({ default: 3000 }),
+  REST_PORT: port({ default: 4000 }),
+  GRPC_PORT: port({ default: 8000 }),
   CORS_ORIGIN: str({ default: "http://localhost:3000" }),
   COMMON_RATE_LIMIT_MAX_REQUESTS: num({ default: 1000 }),
   COMMON_RATE_LIMIT_WINDOW_MS: num({ default: 1000 }),

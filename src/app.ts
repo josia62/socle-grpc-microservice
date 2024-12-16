@@ -5,8 +5,9 @@ import { responseFormatter } from "./service/middleware/response-formatter";
 import { exceptionHandler } from "./service/middleware/exception-handler";
 import { configs } from "@/data/constants/configs";
 import { logger } from "./common/logger";
+import requestLogger from "@/common/middleware/requestLogger";
 
-const { PORT } = configs;
+const { REST_PORT } = configs;
 export const app = express();
 
 class App {
@@ -18,6 +19,7 @@ class App {
   };
 
   private initRoutes = async () => {
+    app.use(requestLogger);
     const { appRouter } = await import("./infrastructure/route/app.route");
     app.use("/api", appRouter, responseFormatter);
     app.use(errorHandler());
@@ -29,7 +31,7 @@ class App {
       await databaseConnect();
       await this.initMiddlewares();
       await this.initRoutes();
-      return app.listen(PORT, () => logger.info(`Listening on ${PORT}`));
+      return app.listen(REST_PORT, () => logger.info(`REST Server listening on ${REST_PORT}`));
     } catch (error) {
       return Promise.reject(error);
     }
