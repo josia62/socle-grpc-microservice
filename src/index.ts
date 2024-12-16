@@ -3,12 +3,12 @@ import * as grpc from "@grpc/grpc-js";
 import serverGrpc from "./service/middleware/grpc";
 import { configs } from "@/data/constants/configs";
 import { logger } from "./common/logger";
-import { databaseConnect } from "./service/middleware/database";
+import App from "./app";
 
 const bootstrapAsync = async () => {
   const { PORT } = configs;
   try {
-    await databaseConnect();
+    await App.init();
     serverGrpc.bindAsync(`localhost:${PORT}`, grpc.ServerCredentials.createInsecure(), (err, port) => {
       if (err) {
         logger.error(err);
